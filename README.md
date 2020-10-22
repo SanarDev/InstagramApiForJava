@@ -25,6 +25,4 @@ Some of features:
 instaClient = InstaClient(applicationContext, "username","password");
 ```
 ### Sample
-
-[Login Sample](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
-[Two Auth Sample](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/TwoStepAuthActivity.kt)
+Login Sample [link](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
