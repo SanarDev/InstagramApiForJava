@@ -1,0 +1,3 @@
+include ':instagramforjava'
+include ':app'
+rootProject.name = "Instagram library test"

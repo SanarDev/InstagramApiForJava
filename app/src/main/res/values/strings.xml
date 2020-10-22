@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Instagram Api Java</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="you_already_logged">You have been logged in successfully</string>
+    <string name="two_step_auth">Two Step Auth</string>
+    <string name="passcode">Passcode</string>
+    <string name="check">Check</string>
+</resources>
