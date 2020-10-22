@@ -18,10 +18,13 @@ Some of features:
 | Get location feed | Collection create/get by id/get all/add items | Send direct photo/video/ stories/profile/ link/location like/live |
 
 ## Usage
+
 #### Use instance of InstaClient:
 ```kotlin
 
 instaClient = InstaClient(applicationContext, "username","password");
 ```
 ### Sample
-[Sample Project](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
+
+[Login Sample](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
+[Two Auth Sample](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/TwoStepAuthActivity.kt)
