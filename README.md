@@ -28,3 +28,8 @@ instaClient = InstaClient(applicationContext, "username","password");
 Login Sample [link](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
 
 Two Step Auth Sample [link](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/TwoStepAuthActivity.kt)
+
+### Developer
+| Name | Github | Email | Telegram |
+| ------ | ------ | ------ | ------ |
+| Behzad Arabi | [@Sanardev](https://github.com/sanardev) | [behzadab15@gmail.com](mailto:behzadab15@gmail.com) | https://t.me/theSanardev |
