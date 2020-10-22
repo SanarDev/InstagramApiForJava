@@ -37,7 +37,17 @@ Some of features:
 ```
 
 ## Usage
-
+#### Gradle
+```
+repositories {
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+dependencies {
+    implementation 'com.github.Sanardev:InstagramApiForJava:1.1.0'
+}
+```
 #### Use instance of InstaClient:
 ```kotlin
 
