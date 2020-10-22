@@ -23,5 +23,5 @@ Some of features:
 
 instaClient = InstaClient(applicationContext, "username","password");
 ```
-### For login use sample
-a
+### Sample
+[Sample Project](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
