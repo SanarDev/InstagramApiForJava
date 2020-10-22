@@ -35,6 +35,7 @@ Some of features:
         jvmTarget = "1.8"
     }
 ```
+
 ## Usage
 
 #### Use instance of InstaClient:
@@ -46,6 +47,9 @@ instaClient = InstaClient(applicationContext, "username","password");
 Login Sample [link](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/MainActivity.kt)
 
 Two Step Auth Sample [link](https://github.com/BehzadArabi/Instagram-Api-Java-kotlin/blob/master/app/src/main/java/com/sanardev/instagramapijavatest/TwoStepAuthActivity.kt)
+
+## License
+MIT.
 
 ### Developer
 | Name | Github | Email | Telegram |
