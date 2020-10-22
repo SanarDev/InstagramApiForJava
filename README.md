@@ -1,4 +1,4 @@
-# Instagram-Api-Java-Kotlin
+# InstagramForJava
 A complete Private Instagram API for Java and Kotlin.
 
 ## Features
