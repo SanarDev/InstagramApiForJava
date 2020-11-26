@@ -17,6 +17,37 @@ Some of features:
 | Change password | Send direct message | Share story |
 | Get location feed | Collection create/get by id/get all/add items | Send direct photo/video/ stories/profile/ link/location like/live |
 
+## Version 2.0 Detail:
+- [Add] currentUser
+- [Add] UnsendMessage in direct
+- [Add] Load More TimeLine Posts
+- [Add] Bundle To MediaOrAdd
+- [Add] Bundle To Thread
+- [Add] Get User Posts
+- [Add] Get Me
+- [Add] Get Thread By UserRecipient
+- [Add] Bundle To Message
+- [Add] ReelMentions to story
+- [Add] StoryPolls to story
+- [Add] ReelMentions To Story
+- [Add] StoryFeedMedia To Story
+- [Add] StoryHashtag To Story
+- [Add] StoryLocation To Story
+- [Add] StoryQuestion To Story
+- [Add] StoryQuiz To Story
+- [Add] StoryCountDown To Story
+- [Add] StorySlider To Story
+- [Add] StoryAntiBullySticker To Story
+- [Add] Put Vote Slider To StoryProcessor
+- [Add] MarkStoriesAsSeen To StoryProcessor
+- [Add] StoryQuestionResponse To StoryProccesor
+- [Add] StoryQuizAnswer To StoryProccesor
+- [Change] threadId type in shareStory
+- [Change] threadId type in shareMedia
+- [Change] model of lastPermanentItem in IGThread
+- [Bug Fixed] sendMediaImage in direct
+- [Bug Fixed] sendVoice in direct
+
 
 ## Requirememt
 #### RxJava RxAndroid
