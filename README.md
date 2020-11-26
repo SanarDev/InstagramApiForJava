@@ -17,7 +17,7 @@ Some of features:
 | Change password | Send direct message | Share story |
 | Get location feed | Collection create/get by id/get all/add items | Send direct photo/video/ stories/profile/ link/location like/live |
 
-## Version 2.0 Detail:
+## Version 2.0 Details:
 - [Add] currentUser
 - [Add] UnsendMessage in direct
 - [Add] Load More TimeLine Posts
