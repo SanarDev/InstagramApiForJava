@@ -40,8 +40,8 @@ Some of features:
 - [Add] StoryAntiBullySticker To Story
 - [Add] Put Vote Slider To StoryProcessor
 - [Add] MarkStoriesAsSeen To StoryProcessor
-- [Add] StoryQuestionResponse To StoryProccesor
-- [Add] StoryQuizAnswer To StoryProccesor
+- [Add] StoryQuestionResponse To StoryProcessor
+- [Add] StoryQuizAnswer To StoryProcessor
 - [Change] threadId type in shareStory
 - [Change] threadId type in shareMedia
 - [Change] model of lastPermanentItem in IGThread
