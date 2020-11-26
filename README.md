@@ -76,7 +76,7 @@ repositories {
     }
 }
 dependencies {
-    implementation 'com.github.Sanardev:InstagramApiForJava:1.1.0'
+    implementation 'com.github.SanarDev:InstagramApiForJava:2.0'
 }
 ```
 #### Use instance of InstaClient:
