@@ -30,4 +30,59 @@ public class CreativeConfig {
     @Expose
     private EffectPreview effectPreview;
 
+    public String getCameraFacing() {
+        return cameraFacing;
+    }
+
+    public void setCameraFacing(String cameraFacing) {
+        this.cameraFacing = cameraFacing;
+    }
+
+    public List<Long> getEffectIds() {
+        return effectIds;
+    }
+
+    public void setEffectIds(List<Long> effectIds) {
+        this.effectIds = effectIds;
+    }
+
+    public Long getFaceEffectId() {
+        return faceEffectId;
+    }
+
+    public void setFaceEffectId(Long faceEffectId) {
+        this.faceEffectId = faceEffectId;
+    }
+
+    public String getCaptureType() {
+        return captureType;
+    }
+
+    public void setCaptureType(String captureType) {
+        this.captureType = captureType;
+    }
+
+    public Boolean getShouldRenderTryItOn() {
+        return shouldRenderTryItOn;
+    }
+
+    public void setShouldRenderTryItOn(Boolean shouldRenderTryItOn) {
+        this.shouldRenderTryItOn = shouldRenderTryItOn;
+    }
+
+    public String getFailureReason() {
+        return failureReason;
+    }
+
+    public void setFailureReason(String failureReason) {
+        this.failureReason = failureReason;
+    }
+
+    public EffectPreview getEffectPreview() {
+        return effectPreview;
+    }
+
+    public void setEffectPreview(EffectPreview effectPreview) {
+        this.effectPreview = effectPreview;
+    }
 }

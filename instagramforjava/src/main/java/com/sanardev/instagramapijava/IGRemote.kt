@@ -235,8 +235,11 @@ interface IGRemote {
         @Query("from_module") fromModule: String = "feed_timeline"
     ): Observable<IGUserInfoResponse>
 
-    @GET(IGConstants.API_PREFIX  + "media/{media_id}/info/")
-    fun getMediaById(@HeaderMap header: Map<String, String>,@Path("media_id") mediaId:String):Observable<IGMediaResponse>
+    @GET(IGConstants.API_PREFIX + "media/{media_id}/info/")
+    fun getMediaById(
+        @HeaderMap header: Map<String, String>,
+        @Path("media_id") mediaId: String
+    ): Observable<IGMediaResponse>
 
     @GET(IGConstants.API_PREFIX + "direct_v2/inbox/")
     fun getDirectIndex(
@@ -255,9 +258,9 @@ interface IGRemote {
         @Query("direction") direction: String = "older",
         @Query("seq_id") seqId: Int,
         @Query("thread_message_limit") threadMessageLimit: Int = 10,
-        @Query("persistentBadging") persistentBadging:Boolean = true,
-        @Query("limit") limit:Int=10
-    ):Observable<IGDirectsResponse>
+        @Query("persistentBadging") persistentBadging: Boolean = true,
+        @Query("limit") limit: Int = 10
+    ): Observable<IGDirectsResponse>
 
 
     @GET(IGConstants.API_PREFIX + "direct_v2/threads/{threadId}/")
@@ -299,6 +302,24 @@ interface IGRemote {
         @Query("show_threads") showThreads: Boolean = true
     ): Observable<IGRecipientsResponse>
 
+
+    @GET(IGConstants.API_PREFIX + "feed/user/{user_id}/")
+    fun getUserPosts(
+        @HeaderMap header: Map<String, String>,
+        @Path("user_id") userId: Long,
+        @Query("exclude_comment") excludeComment: Boolean = false,
+        @Query("only_fetch_first_carousel_media") onlyFetchFirstCarouselMedia: Boolean = false
+    ): Observable<IGPostsResponse>
+
+    @GET(IGConstants.API_PREFIX + "feed/user/{user_id}")
+    fun getMorePosts(
+        @HeaderMap header: Map<String, String>,
+        @Path("user_id") userId: Long,
+        @Query("exclude_comment") excludeComment: Boolean = false,
+        @Query("only_fetch_first_carousel_media") onlyFetchFirstCarouselMedia: Boolean = false,
+        @Query("max_id") previousPostId: String
+    ): Observable<IGPostsResponse>
+
     @GET(IGConstants.API_PREFIX + "direct_v2/ranked_recipients/")
     fun searchRecipients(
         @HeaderMap header: Map<String, String>,
@@ -320,6 +341,14 @@ interface IGRemote {
         @Path("item_id") itemId: String,
         @Body requestBody: RequestBody
     ): Observable<IGDirectActionResponse>
+
+    @POST(IGConstants.API_PREFIX + "direct_v2/threads/{thread_id}/items/{item_id}/delete/")
+    fun unsendMessage(
+        @HeaderMap header: Map<String, String>,
+        @Path("thread_id") threadId: String,
+        @Path("item_id") itemId: String,
+        @Body requestBody: RequestBody
+    ): Observable<ResponseBody>
 
     @POST(IGConstants.API_PREFIX + "direct_v2/visual_threads/{thread_id}/item_seen/")
     fun markAsSeenRavenMedia(
@@ -345,5 +374,44 @@ interface IGRemote {
     fun sendDirectMediaVoice(
         @HeaderMap header: Map<String, String>,
         @Body requestBody: RequestBody
-    ): Observable<IGDirectActionResponse>
+    ): Observable<IGMediaVoiceResponse>
+
+    @GET(IGConstants.API_PREFIX + "direct_v2/threads/get_by_participants/")
+    fun getThreadByParticipants(
+        @HeaderMap header: Map<String, String>,
+        @Query("recipient_users") recipientUsers: String,
+        @Query("seq_id") seqId: Int,
+        @Query("limit") limit: Int = 20
+    ): Observable<IGParticipantsResponse>
+
+    @POST(IGConstants.API_PREFIX + "media/{media_id}/{slider_id}/story_slider_vote/")
+    fun voteSlider(
+        @HeaderMap header: Map<String, String>,
+        @Path("media_id") mediaId: String,
+        @Path("slider_id") sliderId: Long,
+        @Body requestBody: RequestBody
+    ): Observable<IGStoryUpdateResponse>
+
+    @POST(IGConstants.API_PREFIX_V2 + "media/seen/?reel=1&live_vode=0")
+    fun markStoriesAsSeen(
+        @HeaderMap header: Map<String, String>,
+        @Body requestBody: RequestBody
+    ): Observable<ResponseBody>
+
+    @POST(IGConstants.API_PREFIX + "media/{media_id}/{question_id}/story_question_response/")
+    fun storyQuestionResponse(
+        @HeaderMap header: Map<String, String>,
+        @Path("media_id") mediaId: String,
+        @Path("question_id") questionId: Long,
+        @Body requestBody: RequestBody
+    ): Observable<ResponseBody>
+
+    @POST(IGConstants.API_PREFIX + "media/{media_id}/{quiz_id}/story_quiz_answer/")
+    fun storyQuizAnswer(
+        @HeaderMap header: Map<String, String>,
+        @Path("media_id") mediaId: String,
+        @Path("quiz_id") quizId: Long,
+        @Body requestBody: RequestBody
+    ): Observable<IGStoryUpdateResponse>
+
 }

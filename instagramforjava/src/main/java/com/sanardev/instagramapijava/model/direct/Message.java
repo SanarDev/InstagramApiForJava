@@ -16,6 +16,8 @@ import com.sanardev.instagramapijava.model.direct.messagetype.ReelShare;
 import com.sanardev.instagramapijava.model.direct.messagetype.StoryShare;
 import com.sanardev.instagramapijava.model.direct.messagetype.VideoCallEvent;
 
+import java.util.HashMap;
+
 public class Message {
 
 
@@ -91,6 +93,15 @@ public class Message {
     @SerializedName("is_delivered")
     @Expose
     private boolean isDelivered = true;
+    private HashMap<Object,Object> bundle;
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public String getItemId() {
         return itemId;

@@ -3,6 +3,7 @@ package com.sanardev.instagramapijava.model.story;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Tray {
@@ -68,6 +69,15 @@ public class Tray {
     @SerializedName("items")
     @Expose
     private List<Story> items = null;
+    private HashMap<Object,Object> bundle = new HashMap<>();
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public Long getId() {
         return id;

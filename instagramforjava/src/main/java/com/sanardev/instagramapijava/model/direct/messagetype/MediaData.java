@@ -3,6 +3,7 @@ package com.sanardev.instagramapijava.model.direct.messagetype;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MediaData {
@@ -25,6 +26,15 @@ public class MediaData {
     @SerializedName("reply_expiring_at_us")
     @Expose
     private Object replyExpiringAtUs;
+    private HashMap<Object,Object> bundle;
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public VoiceMedia getVoiceMedia() {
         return voiceMedia;

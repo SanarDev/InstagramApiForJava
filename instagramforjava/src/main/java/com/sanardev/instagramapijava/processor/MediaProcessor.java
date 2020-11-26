@@ -17,6 +17,7 @@ import com.sanardev.instagramapijava.utils.InstaHashUtils;
 import com.sanardev.instagramapijava.utils.Utilities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import io.reactivex.Observable;
@@ -32,7 +33,7 @@ public class MediaProcessor {
     }
 
     public Observable<IGLikePostResponse> likePost(String mediaId) {
-        if(igRequest.getLoggedUser() == null){
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
         Cookie cookie = igRequest.getCookie();
@@ -52,7 +53,7 @@ public class MediaProcessor {
     }
 
     public Observable<IGUnlikePostResponse> unlikePost(String mediaId) {
-        if(igRequest.getLoggedUser() == null){
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
         Cookie cookie = igRequest.getCookie();
@@ -73,37 +74,48 @@ public class MediaProcessor {
 
 
     public Observable<IGTimeLinePostsResponse> getTimelinePosts() {
-        if(igRequest.getLoggedUser() == null){
+        return getTimelinePosts(null);
+    }
+
+    public Observable<IGTimeLinePostsResponse> getTimelinePosts(String maxId) {
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
         Cookie cookie = igRequest.getCookie();
-        IGTimeLinePostsRequest igTimeLinePostsRequest = new IGTimeLinePostsRequest();
-        igTimeLinePostsRequest.setPhoneId(cookie.getPhoneID());
-        igTimeLinePostsRequest.setReason("cold_start_fetch");
-        igTimeLinePostsRequest.setBatteryLevel("74");
-        igTimeLinePostsRequest.setTimezoneOffset(Utilities.getTimeZoneOffset());
-        igTimeLinePostsRequest.setCsrfToken(cookie.getCsrftoken());
-        igTimeLinePostsRequest.setDeviceId(cookie.getDeviceID());
-        igTimeLinePostsRequest.setRequestId(UUID.randomUUID().toString());
-        igTimeLinePostsRequest.setIsPullToRefresh(false);
-        igTimeLinePostsRequest.setUuid(cookie.getAdid());
-        igTimeLinePostsRequest.setIsCharging(false);
-        igTimeLinePostsRequest.setWillSoundOn(false);
-        igTimeLinePostsRequest.setSessionId(cookie.getSessionID());
-        igTimeLinePostsRequest.setBloksVersioningId(IGConstants.BLOKS_VERSION_ID);
-        return igRequest.getRemote().getTimelinePosts(igRequest.getHeaders(), igRequest.getSignaturePayload(igTimeLinePostsRequest))
+        HashMap<String,Object> data = new HashMap();
+        data.put("phone_id",cookie.getPhoneID());
+        data.put("reason","cold_start_fetch");
+        data.put("battery_level","74");
+        data.put("timezone_offset",Utilities.getTimeZoneOffset());
+        data.put("_csrftoken",cookie.getCsrftoken());
+        data.put("device_id",cookie.getDeviceID());
+        data.put("request_id",UUID.randomUUID().toString());
+        data.put("is_pull_to_refresh",false);
+        data.put("_uuid",cookie.getAdid());
+        data.put("is_charging",false);
+        data.put("will_sound_on",false);
+        data.put("session_id",cookie.getSessionID());
+        data.put("bloks_versioning_id",IGConstants.BLOKS_VERSION_ID);
+        if(maxId != null){
+            data.put("max_id",maxId);
+        }
+        return igRequest.getRemote().getTimelinePosts(igRequest.getHeaders(), igRequest.getSignaturePayload(data))
                 .subscribeOn(Schedulers.io());
     }
 
     public Observable<IGShareMediaResponse> shareMedia(String threadId, String mediaId, int mediaType) {
-        if(igRequest.getLoggedUser() == null){
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
         Cookie cookie = igRequest.getCookie();
         HashMap<String, Object> data = new HashMap<>();
         data.put("action", "send_item");
-        data.put("thread_ids", String.format("[%s]", threadId));
-        data.put("client_context",InstaHashUtils.getClientContext());
+        if(threadId.contains("[[")){
+            data.put("recipient_users", threadId);
+        }else{
+            data.put("thread_ids", String.format("[%s]",threadId));
+        }
+        data.put("client_context", InstaHashUtils.getClientContext());
         data.put("media_id", mediaId);
         data.put("_csrftoken", cookie.getCsrftoken());
         data.put("device_id", cookie.getDeviceID());
@@ -120,14 +132,14 @@ public class MediaProcessor {
     }
 
     public Observable<IGShareMediaResponse> shareMedia(long userId, String mediaId, int mediaType) {
-        if(igRequest.getLoggedUser() == null){
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
         Cookie cookie = igRequest.getCookie();
         HashMap<Object, Object> data = new HashMap<>();
         data.put("action", "send_item");
         data.put("recipient_users", String.format("[[%d]]", userId));
-        data.put("client_context",InstaHashUtils.getClientContext());
+        data.put("client_context", InstaHashUtils.getClientContext());
         data.put("media_id", mediaId);
         data.put("_csrftoken", cookie.getCsrftoken());
         data.put("device_id", cookie.getDeviceID());
@@ -139,12 +151,12 @@ public class MediaProcessor {
                 .subscribeOn(Schedulers.io());
     }
 
-    public Observable<IGMediaResponse> getMediaById(String mediaId){
-        if(igRequest.getLoggedUser() == null){
+    public Observable<IGMediaResponse> getMediaById(String mediaId) {
+        if (igRequest.getLoggedUser() == null) {
             throw new RuntimeException("You must login first");
         }
-        return igRequest.getRemote().getMediaById(igRequest.getHeaders(),mediaId)
-                        .subscribeOn(Schedulers.io());
+        return igRequest.getRemote().getMediaById(igRequest.getHeaders(), mediaId)
+                .subscribeOn(Schedulers.io());
     }
 
 

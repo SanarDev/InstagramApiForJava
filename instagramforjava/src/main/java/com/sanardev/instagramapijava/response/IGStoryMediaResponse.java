@@ -10,7 +10,7 @@ public class IGStoryMediaResponse extends BaseResponse{
 
     @SerializedName("reels")
     @Expose
-    private HashMap<Long, Tray> reels;
+    private HashMap<Long, Tray> reels = new HashMap<>();
 
     public HashMap<Long, Tray> getReels() {
         return reels;

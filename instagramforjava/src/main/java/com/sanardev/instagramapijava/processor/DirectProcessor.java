@@ -2,16 +2,24 @@ package com.sanardev.instagramapijava.processor;
 
 import com.sanardev.instagramapijava.IGRequest;
 import com.sanardev.instagramapijava.app.Cookie;
+import com.sanardev.instagramapijava.model.direct.IGThread;
+import com.sanardev.instagramapijava.model.direct.ThreadUser;
 import com.sanardev.instagramapijava.model.login.IGLoggedUser;
 import com.sanardev.instagramapijava.response.IGDirectActionResponse;
 import com.sanardev.instagramapijava.response.IGDirectChatResponse;
 import com.sanardev.instagramapijava.response.IGDirectsResponse;
+import com.sanardev.instagramapijava.response.IGMediaVoiceResponse;
+import com.sanardev.instagramapijava.response.IGParticipantsResponse;
 import com.sanardev.instagramapijava.response.IGPresenceResponse;
 import com.sanardev.instagramapijava.response.IGRecipientsResponse;
 import com.sanardev.instagramapijava.utils.InstaHashUtils;
 import com.sanardev.instagramapijava.utils.MediaUtils;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -148,11 +156,22 @@ public class DirectProcessor {
     }
 
     public Observable<IGDirectActionResponse> sendReaction(String itemId, String threadId, String reactionType) {
-        return sendReaction(itemId, threadId, InstaHashUtils.getClientContext(), reactionType, "created");
+        return sendReaction(itemId, threadId, InstaHashUtils.getClientContext(), reactionType, "created")
+                .subscribeOn(Schedulers.io());
+    }
+    public Observable<ResponseBody> unsendMessage(String itemId, String threadId, String reactionType) {
+        Cookie cookie = igRequest.getCookie();
+        HashMap data = new HashMap();
+        data.put("_uuid",cookie.getAdid());
+        data.put("_csrftoken",cookie.getCsrftoken());
+        data.put("original_message_client_context",InstaHashUtils.getClientContext());
+        return igRequest.getRemote().unsendMessage(igRequest.getHeaders(),itemId, threadId,igRequest.formUrlEncode(data))
+                .subscribeOn(Schedulers.io());
     }
 
-    public Observable<IGDirectActionResponse> sendLikeReaction(String itemId, String threadId) {
-        return sendReaction(itemId, threadId, InstaHashUtils.getClientContext(), "like", "created");
+    public Observable<IGDirectActionResponse> sendLikeReaction(String itemId, String threadId,String clientContext) {
+        return sendReaction(itemId, threadId, clientContext, "like", "created")
+                .subscribeOn(Schedulers.io());
     }
 
     public Observable<IGDirectActionResponse> markAsSeenMessage(String threadId, String itemId, String clientContext) {
@@ -172,7 +191,8 @@ public class DirectProcessor {
     }
 
     public Observable<IGDirectActionResponse> markAsSeenMessage(String threadId, String itemId) {
-        return markAsSeenMessage(threadId, itemId, InstaHashUtils.getClientContext());
+        return markAsSeenMessage(threadId, itemId, InstaHashUtils.getClientContext())
+                .subscribeOn(Schedulers.io());
     }
 
     public Observable<ResponseBody> markAsSeenRavenMedia(String threadId, String itemId, String messageClientContext) {
@@ -191,7 +211,7 @@ public class DirectProcessor {
                 .subscribeOn(Schedulers.io());
     }
 
-    public Observable<IGDirectActionResponse> sendMediaVideo(String threadId, long userId, String filePath, String clientContext) {
+    public Observable<IGDirectActionResponse> sendMediaVideo(String threadId, List<Long> userId, String filePath, String clientContext) {
         if(igRequest.getLoggedUser() == null){
             throw new RuntimeException("You must login first");
         }
@@ -214,7 +234,7 @@ public class DirectProcessor {
                 });
     }
 
-    public Observable<IGDirectActionResponse> sendMediaImage(String threadId, long userId, String filePath, String clientContext) {
+    public Observable<IGDirectActionResponse> sendMediaImage(String threadId, List<Long> userId, String filePath, String clientContext) {
         if(igRequest.getLoggedUser() == null){
             throw new RuntimeException("You must login first");
         }
@@ -222,28 +242,28 @@ public class DirectProcessor {
         return igRequest.uploadImage(userId, filePath)
                 .subscribeOn(Schedulers.io())
                 .flatMap(response -> {
-                    HashMap data = new HashMap();
-                    data.put("action", "send_item");
-                    data.put("thread_ids", String.format("[%s]", threadId));
-                    data.put("client_context", clientContext);
-                    data.put("_csrftoken", cookie.getCsrftoken());
-                    data.put("allow_full_aspect_ratio", true);
-                    data.put("device_id", cookie.getDeviceID());
-                    data.put("mutation_token", clientContext);
-                    data.put("_uuid", cookie.getAdid());
-                    data.put("upload_id", response.getUploadId());
-                    data.put("offline_threading_id", clientContext);
-                    return igRequest.getRemote().sendDirectMediaImage(igRequest.getHeaders(), igRequest.formUrlEncode(data));
+                    HashMap<Object,Object> dataRequest = new HashMap();
+                    dataRequest.put("action", "send_item");
+                    dataRequest.put("thread_ids", String.format("[%s]", threadId));
+                    dataRequest.put("client_context", clientContext);
+                    dataRequest.put("_csrftoken", cookie.getCsrftoken());
+                    dataRequest.put("allow_full_aspect_ratio", true);
+                    dataRequest.put("device_id", cookie.getDeviceID());
+                    dataRequest.put("mutation_token", clientContext);
+                    dataRequest.put("_uuid", cookie.getAdid());
+                    dataRequest.put("upload_id", response.getUploadId());
+                    dataRequest.put("offline_threading_id", clientContext);
+                    return igRequest.getRemote().sendDirectMediaImage(igRequest.getHeaders(), igRequest.formUrlEncode(dataRequest));
                 });
     }
 
-    public Observable<IGDirectActionResponse> sendMediaVoice(String threadId, long userId, String filePath, String clientContext) {
+    public Observable<IGMediaVoiceResponse> sendMediaVoice(String threadId, List<Long> userId, String filePath, String clientContext) {
         if(igRequest.getLoggedUser() == null){
             throw new RuntimeException("You must login first");
         }
-        if(!MediaUtils.getMimeType(filePath).contains("mp4")){
-            throw new IllegalArgumentException("filePath type must be mp4");
-        }
+//        if(!MediaUtils.getMimeType(filePath).contains("mp4")){
+//            throw new IllegalArgumentException("filePath type must be mp4");
+//        }
         Cookie cookie = igRequest.getCookie();
         return igRequest.uploadVoice(userId, filePath)
                 .subscribeOn(Schedulers.io())
@@ -264,4 +284,21 @@ public class DirectProcessor {
                 });
     }
 
+    public Observable<IGParticipantsResponse> getThreadByParticipants(long userId,int seqId){
+        return igRequest.getRemote().getThreadByParticipants(igRequest.getHeaders(),String.format("[[%d]]",userId),seqId,20)
+                .subscribeOn(Schedulers.io());
+    }
+
+    public IGThread createFakeThread(long userId,String fullname, @Nullable String profileImage) {
+        IGThread igThread = new IGThread();
+        igThread.setThreadId(String.format("[[%d]]",userId));
+        igThread.setThreadTitle(fullname);
+        ThreadUser threadUser = new ThreadUser();
+        threadUser.setPk(userId);
+        threadUser.setProfilePicUrl(profileImage);
+        ArrayList<ThreadUser> users = new ArrayList<>();
+        users.add(threadUser);
+        igThread.setUsers(users);
+        return igThread;
+    }
 }

@@ -7,6 +7,7 @@ import com.sanardev.instagramapijava.model.media.CarouselMedia;
 import com.sanardev.instagramapijava.model.media.ImageVersions2;
 import com.sanardev.instagramapijava.model.media.Usertags;
 import com.sanardev.instagramapijava.model.media.VideoVersion;
+import com.sanardev.instagramapijava.model.user.TinyUser;
 
 import java.util.List;
 
@@ -78,7 +79,7 @@ public class MediaShare {
     private Long viewCount;
     @SerializedName("user")
     @Expose
-    private Object user;
+    private TinyUser user;
     @SerializedName("can_viewer_reshare")
     @Expose
     private Boolean canViewerReshare;
@@ -299,11 +300,11 @@ public class MediaShare {
         this.viewCount = viewCount;
     }
 
-    public Object getUser() {
+    public TinyUser getUser() {
         return user;
     }
 
-    public void setUser(Object user) {
+    public void setUser(TinyUser user) {
         this.user = user;
     }
 

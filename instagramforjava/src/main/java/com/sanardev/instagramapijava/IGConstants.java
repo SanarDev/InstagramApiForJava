@@ -66,6 +66,7 @@ public class IGConstants {
 
     public static final String BASE_API_URL = "https://i.instagram.com/";
     public static final String API_PREFIX = "api/v1/";
+    public static final String API_PREFIX_V2 = "api/v2/";
 
     public static final String IG_SET_PASSWORD_ENCRYPTION_PUB_KEY = "ig-set-password-encryption-pub-key";
     public static final String IG_SET_PASSWORD_ENCRYPTION_KEY_ID = "ig-set-password-encryption-key-id";
@@ -87,5 +88,6 @@ public class IGConstants {
         public static final String LOGIN_TOO_MANY_TRIED = "rate_limit_error";
         public static final String LOGIN_REQUIRE_TWO_STEP_AUTH = "require_two_step_auth";
         public static final String LOGIN_INVALID_SMS_CODE = "sms_code_validation_code_invalid";
+        public static final String INVALID_TWO_FACTOR_CODE= "invalid_nonce";
     }
 }

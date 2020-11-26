@@ -237,4 +237,611 @@ public class BigUser {
     private boolean openExternalUrlWithInAppBrowser;
 
 
+    public long getPk() {
+        return pk;
+    }
+
+    public void setPk(long pk) {
+        this.pk = pk;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public String getProfilePicUrl() {
+        return profilePicUrl;
+    }
+
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
+    }
+
+    public String getProfilePicId() {
+        return profilePicId;
+    }
+
+    public void setProfilePicId(String profilePicId) {
+        this.profilePicId = profilePicId;
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
+    public boolean isHasAnonymousProfilePicture() {
+        return hasAnonymousProfilePicture;
+    }
+
+    public void setHasAnonymousProfilePicture(boolean hasAnonymousProfilePicture) {
+        this.hasAnonymousProfilePicture = hasAnonymousProfilePicture;
+    }
+
+    public Integer getMediaCount() {
+        return mediaCount;
+    }
+
+    public void setMediaCount(Integer mediaCount) {
+        this.mediaCount = mediaCount;
+    }
+
+    public Integer getGeoMediaCount() {
+        return geoMediaCount;
+    }
+
+    public void setGeoMediaCount(Integer geoMediaCount) {
+        this.geoMediaCount = geoMediaCount;
+    }
+
+    public Integer getFollowerCount() {
+        return followerCount;
+    }
+
+    public void setFollowerCount(Integer followerCount) {
+        this.followerCount = followerCount;
+    }
+
+    public Integer getFollowingCount() {
+        return followingCount;
+    }
+
+    public void setFollowingCount(Integer followingCount) {
+        this.followingCount = followingCount;
+    }
+
+    public Integer getFollowingTagCount() {
+        return followingTagCount;
+    }
+
+    public void setFollowingTagCount(Integer followingTagCount) {
+        this.followingTagCount = followingTagCount;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public boolean isCanLinkEntitiesInBio() {
+        return canLinkEntitiesInBio;
+    }
+
+    public void setCanLinkEntitiesInBio(boolean canLinkEntitiesInBio) {
+        this.canLinkEntitiesInBio = canLinkEntitiesInBio;
+    }
+
+    public BiographyWithEntities getBiographyWithEntities() {
+        return biographyWithEntities;
+    }
+
+    public void setBiographyWithEntities(BiographyWithEntities biographyWithEntities) {
+        this.biographyWithEntities = biographyWithEntities;
+    }
+
+    public String getExternalUrl() {
+        return externalUrl;
+    }
+
+    public void setExternalUrl(String externalUrl) {
+        this.externalUrl = externalUrl;
+    }
+
+    public boolean isCanBoostPost() {
+        return canBoostPost;
+    }
+
+    public void setCanBoostPost(boolean canBoostPost) {
+        this.canBoostPost = canBoostPost;
+    }
+
+    public boolean isCanSeeOrganicInsights() {
+        return canSeeOrganicInsights;
+    }
+
+    public void setCanSeeOrganicInsights(boolean canSeeOrganicInsights) {
+        this.canSeeOrganicInsights = canSeeOrganicInsights;
+    }
+
+    public boolean isShowInsightsTerms() {
+        return showInsightsTerms;
+    }
+
+    public void setShowInsightsTerms(boolean showInsightsTerms) {
+        this.showInsightsTerms = showInsightsTerms;
+    }
+
+    public boolean isCanConvertToBusiness() {
+        return canConvertToBusiness;
+    }
+
+    public void setCanConvertToBusiness(boolean canConvertToBusiness) {
+        this.canConvertToBusiness = canConvertToBusiness;
+    }
+
+    public boolean isCanCreateSponsorTags() {
+        return canCreateSponsorTags;
+    }
+
+    public void setCanCreateSponsorTags(boolean canCreateSponsorTags) {
+        this.canCreateSponsorTags = canCreateSponsorTags;
+    }
+
+    public boolean isAllowedToCreateStandalonePersonalFundraisers() {
+        return isAllowedToCreateStandalonePersonalFundraisers;
+    }
+
+    public void setAllowedToCreateStandalonePersonalFundraisers(boolean allowedToCreateStandalonePersonalFundraisers) {
+        isAllowedToCreateStandalonePersonalFundraisers = allowedToCreateStandalonePersonalFundraisers;
+    }
+
+    public boolean isCanCreateNewStandalonePersonalFundraiser() {
+        return canCreateNewStandalonePersonalFundraiser;
+    }
+
+    public void setCanCreateNewStandalonePersonalFundraiser(boolean canCreateNewStandalonePersonalFundraiser) {
+        this.canCreateNewStandalonePersonalFundraiser = canCreateNewStandalonePersonalFundraiser;
+    }
+
+    public boolean isCanBeTaggedAsSponsor() {
+        return canBeTaggedAsSponsor;
+    }
+
+    public void setCanBeTaggedAsSponsor(boolean canBeTaggedAsSponsor) {
+        this.canBeTaggedAsSponsor = canBeTaggedAsSponsor;
+    }
+
+    public boolean isCanSeeSupportInbox() {
+        return canSeeSupportInbox;
+    }
+
+    public void setCanSeeSupportInbox(boolean canSeeSupportInbox) {
+        this.canSeeSupportInbox = canSeeSupportInbox;
+    }
+
+    public boolean isCanSeeSupportInboxV1() {
+        return canSeeSupportInboxV1;
+    }
+
+    public void setCanSeeSupportInboxV1(boolean canSeeSupportInboxV1) {
+        this.canSeeSupportInboxV1 = canSeeSupportInboxV1;
+    }
+
+    public Integer getTotalIgtvVideos() {
+        return totalIgtvVideos;
+    }
+
+    public void setTotalIgtvVideos(Integer totalIgtvVideos) {
+        this.totalIgtvVideos = totalIgtvVideos;
+    }
+
+    public Integer getTotalClipsCount() {
+        return totalClipsCount;
+    }
+
+    public void setTotalClipsCount(Integer totalClipsCount) {
+        this.totalClipsCount = totalClipsCount;
+    }
+
+    public Integer getTotalArEffects() {
+        return totalArEffects;
+    }
+
+    public void setTotalArEffects(Integer totalArEffects) {
+        this.totalArEffects = totalArEffects;
+    }
+
+    public String getReelAutoArchive() {
+        return reelAutoArchive;
+    }
+
+    public void setReelAutoArchive(String reelAutoArchive) {
+        this.reelAutoArchive = reelAutoArchive;
+    }
+
+    public boolean isProfileActionNeeded() {
+        return isProfileActionNeeded;
+    }
+
+    public void setProfileActionNeeded(boolean profileActionNeeded) {
+        isProfileActionNeeded = profileActionNeeded;
+    }
+
+    public Integer getUsertagsCount() {
+        return usertagsCount;
+    }
+
+    public void setUsertagsCount(Integer usertagsCount) {
+        this.usertagsCount = usertagsCount;
+    }
+
+    public boolean isUsertagReviewEnabled() {
+        return usertagReviewEnabled;
+    }
+
+    public void setUsertagReviewEnabled(boolean usertagReviewEnabled) {
+        this.usertagReviewEnabled = usertagReviewEnabled;
+    }
+
+    public boolean isNeedy() {
+        return isNeedy;
+    }
+
+    public void setNeedy(boolean needy) {
+        isNeedy = needy;
+    }
+
+    public boolean isInterestAccount() {
+        return isInterestAccount;
+    }
+
+    public void setInterestAccount(boolean interestAccount) {
+        isInterestAccount = interestAccount;
+    }
+
+    public boolean isHasChaining() {
+        return hasChaining;
+    }
+
+    public void setHasChaining(boolean hasChaining) {
+        this.hasChaining = hasChaining;
+    }
+
+    public List<HdProfilePicVersion> getHdProfilePicVersions() {
+        return hdProfilePicVersions;
+    }
+
+    public void setHdProfilePicVersions(List<HdProfilePicVersion> hdProfilePicVersions) {
+        this.hdProfilePicVersions = hdProfilePicVersions;
+    }
+
+    public HdProfilePicUrlInfo getHdProfilePicUrlInfo() {
+        return hdProfilePicUrlInfo;
+    }
+
+    public void setHdProfilePicUrlInfo(HdProfilePicUrlInfo hdProfilePicUrlInfo) {
+        this.hdProfilePicUrlInfo = hdProfilePicUrlInfo;
+    }
+
+    public boolean isHasPlacedOrders() {
+        return hasPlacedOrders;
+    }
+
+    public void setHasPlacedOrders(boolean hasPlacedOrders) {
+        this.hasPlacedOrders = hasPlacedOrders;
+    }
+
+    public boolean isCanTagProductsFromMerchants() {
+        return canTagProductsFromMerchants;
+    }
+
+    public void setCanTagProductsFromMerchants(boolean canTagProductsFromMerchants) {
+        this.canTagProductsFromMerchants = canTagProductsFromMerchants;
+    }
+
+    public boolean isFbpayExperienceEnabled() {
+        return fbpayExperienceEnabled;
+    }
+
+    public void setFbpayExperienceEnabled(boolean fbpayExperienceEnabled) {
+        this.fbpayExperienceEnabled = fbpayExperienceEnabled;
+    }
+
+    public boolean isShowConversionEditEntry() {
+        return showConversionEditEntry;
+    }
+
+    public void setShowConversionEditEntry(boolean showConversionEditEntry) {
+        this.showConversionEditEntry = showConversionEditEntry;
+    }
+
+    public boolean isAggregatePromoteEngagement() {
+        return aggregatePromoteEngagement;
+    }
+
+    public void setAggregatePromoteEngagement(boolean aggregatePromoteEngagement) {
+        this.aggregatePromoteEngagement = aggregatePromoteEngagement;
+    }
+
+    public String getAllowedCommenterType() {
+        return allowedCommenterType;
+    }
+
+    public void setAllowedCommenterType(String allowedCommenterType) {
+        this.allowedCommenterType = allowedCommenterType;
+    }
+
+    public boolean isVideoCreator() {
+        return isVideoCreator;
+    }
+
+    public void setVideoCreator(boolean videoCreator) {
+        isVideoCreator = videoCreator;
+    }
+
+    public boolean isHasProfileVideoFeed() {
+        return hasProfileVideoFeed;
+    }
+
+    public void setHasProfileVideoFeed(boolean hasProfileVideoFeed) {
+        this.hasProfileVideoFeed = hasProfileVideoFeed;
+    }
+
+    public boolean isHasHighlightReels() {
+        return hasHighlightReels;
+    }
+
+    public void setHasHighlightReels(boolean hasHighlightReels) {
+        this.hasHighlightReels = hasHighlightReels;
+    }
+
+    public boolean isEligibleToShowFbCrossSharingNux() {
+        return isEligibleToShowFbCrossSharingNux;
+    }
+
+    public void setEligibleToShowFbCrossSharingNux(boolean eligibleToShowFbCrossSharingNux) {
+        isEligibleToShowFbCrossSharingNux = eligibleToShowFbCrossSharingNux;
+    }
+
+    public Object getPageIdForNewSumaBizAccount() {
+        return pageIdForNewSumaBizAccount;
+    }
+
+    public void setPageIdForNewSumaBizAccount(Object pageIdForNewSumaBizAccount) {
+        this.pageIdForNewSumaBizAccount = pageIdForNewSumaBizAccount;
+    }
+
+    public List<Object> getEligibleShoppingSignupEntrypoints() {
+        return eligibleShoppingSignupEntrypoints;
+    }
+
+    public void setEligibleShoppingSignupEntrypoints(List<Object> eligibleShoppingSignupEntrypoints) {
+        this.eligibleShoppingSignupEntrypoints = eligibleShoppingSignupEntrypoints;
+    }
+
+    public boolean isCanBeReportedAsFraud() {
+        return canBeReportedAsFraud;
+    }
+
+    public void setCanBeReportedAsFraud(boolean canBeReportedAsFraud) {
+        this.canBeReportedAsFraud = canBeReportedAsFraud;
+    }
+
+    public boolean isBusiness() {
+        return isBusiness;
+    }
+
+    public void setBusiness(boolean business) {
+        isBusiness = business;
+    }
+
+    public Integer getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(Integer accountType) {
+        this.accountType = accountType;
+    }
+
+    public Integer getProfessionalConversionSuggestedAccountType() {
+        return professionalConversionSuggestedAccountType;
+    }
+
+    public void setProfessionalConversionSuggestedAccountType(Integer professionalConversionSuggestedAccountType) {
+        this.professionalConversionSuggestedAccountType = professionalConversionSuggestedAccountType;
+    }
+
+    public Object getIsCallToActionEnabled() {
+        return isCallToActionEnabled;
+    }
+
+    public void setIsCallToActionEnabled(Object isCallToActionEnabled) {
+        this.isCallToActionEnabled = isCallToActionEnabled;
+    }
+
+    public LinkedFbInfo getLinkedFbInfo() {
+        return linkedFbInfo;
+    }
+
+    public void setLinkedFbInfo(LinkedFbInfo linkedFbInfo) {
+        this.linkedFbInfo = linkedFbInfo;
+    }
+
+    public boolean isCanSeePrimaryCountryInSettings() {
+        return canSeePrimaryCountryInSettings;
+    }
+
+    public void setCanSeePrimaryCountryInSettings(boolean canSeePrimaryCountryInSettings) {
+        this.canSeePrimaryCountryInSettings = canSeePrimaryCountryInSettings;
+    }
+
+    public Object getPersonalAccountAdsPageName() {
+        return personalAccountAdsPageName;
+    }
+
+    public void setPersonalAccountAdsPageName(Object personalAccountAdsPageName) {
+        this.personalAccountAdsPageName = personalAccountAdsPageName;
+    }
+
+    public Object getPersonalAccountAdsPageId() {
+        return personalAccountAdsPageId;
+    }
+
+    public void setPersonalAccountAdsPageId(Object personalAccountAdsPageId) {
+        this.personalAccountAdsPageId = personalAccountAdsPageId;
+    }
+
+    public List<Object> getAccountBadges() {
+        return accountBadges;
+    }
+
+    public void setAccountBadges(List<Object> accountBadges) {
+        this.accountBadges = accountBadges;
+    }
+
+    public boolean isIncludeDirectBlacklistStatus() {
+        return includeDirectBlacklistStatus;
+    }
+
+    public void setIncludeDirectBlacklistStatus(boolean includeDirectBlacklistStatus) {
+        this.includeDirectBlacklistStatus = includeDirectBlacklistStatus;
+    }
+
+    public boolean isCanFollowHashtag() {
+        return canFollowHashtag;
+    }
+
+    public void setCanFollowHashtag(boolean canFollowHashtag) {
+        this.canFollowHashtag = canFollowHashtag;
+    }
+
+    public boolean isPotentialBusiness() {
+        return isPotentialBusiness;
+    }
+
+    public void setPotentialBusiness(boolean potentialBusiness) {
+        isPotentialBusiness = potentialBusiness;
+    }
+
+    public boolean isShowPostInsightsEntryPoint() {
+        return showPostInsightsEntryPoint;
+    }
+
+    public void setShowPostInsightsEntryPoint(boolean showPostInsightsEntryPoint) {
+        this.showPostInsightsEntryPoint = showPostInsightsEntryPoint;
+    }
+
+    public boolean isFeedPostReshareDisabled() {
+        return feedPostReshareDisabled;
+    }
+
+    public void setFeedPostReshareDisabled(boolean feedPostReshareDisabled) {
+        this.feedPostReshareDisabled = feedPostReshareDisabled;
+    }
+
+    public Integer getBestiesCount() {
+        return bestiesCount;
+    }
+
+    public void setBestiesCount(Integer bestiesCount) {
+        this.bestiesCount = bestiesCount;
+    }
+
+    public boolean isShowBestiesBadge() {
+        return showBestiesBadge;
+    }
+
+    public void setShowBestiesBadge(boolean showBestiesBadge) {
+        this.showBestiesBadge = showBestiesBadge;
+    }
+
+    public Integer getRecentlyBestiedByCount() {
+        return recentlyBestiedByCount;
+    }
+
+    public void setRecentlyBestiedByCount(Integer recentlyBestiedByCount) {
+        this.recentlyBestiedByCount = recentlyBestiedByCount;
+    }
+
+    public Nametag getNametag() {
+        return nametag;
+    }
+
+    public void setNametag(Nametag nametag) {
+        this.nametag = nametag;
+    }
+
+    public boolean isExistingUserAgeCollectionEnabled() {
+        return existingUserAgeCollectionEnabled;
+    }
+
+    public void setExistingUserAgeCollectionEnabled(boolean existingUserAgeCollectionEnabled) {
+        this.existingUserAgeCollectionEnabled = existingUserAgeCollectionEnabled;
+    }
+
+    public boolean isAboutYourAccountBloksEntrypointEnabled() {
+        return aboutYourAccountBloksEntrypointEnabled;
+    }
+
+    public void setAboutYourAccountBloksEntrypointEnabled(boolean aboutYourAccountBloksEntrypointEnabled) {
+        this.aboutYourAccountBloksEntrypointEnabled = aboutYourAccountBloksEntrypointEnabled;
+    }
+
+    public boolean isAutoExpandChaining() {
+        return autoExpandChaining;
+    }
+
+    public void setAutoExpandChaining(boolean autoExpandChaining) {
+        this.autoExpandChaining = autoExpandChaining;
+    }
+
+    public boolean isHighlightReshareDisabled() {
+        return highlightReshareDisabled;
+    }
+
+    public void setHighlightReshareDisabled(boolean highlightReshareDisabled) {
+        this.highlightReshareDisabled = highlightReshareDisabled;
+    }
+
+    public boolean isMemorialized() {
+        return isMemorialized;
+    }
+
+    public void setMemorialized(boolean memorialized) {
+        isMemorialized = memorialized;
+    }
+
+    public boolean isOpenExternalUrlWithInAppBrowser() {
+        return openExternalUrlWithInAppBrowser;
+    }
+
+    public void setOpenExternalUrlWithInAppBrowser(boolean openExternalUrlWithInAppBrowser) {
+        this.openExternalUrlWithInAppBrowser = openExternalUrlWithInAppBrowser;
+    }
 }

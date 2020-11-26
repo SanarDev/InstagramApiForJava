@@ -4,6 +4,8 @@ package com.sanardev.instagramapijava.model.media;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
+
 public class VideoVersion {
 
     @SerializedName("type")
@@ -21,6 +23,15 @@ public class VideoVersion {
     @SerializedName("id")
     @Expose
     private String id;
+    private HashMap<Object,Object> bundle;
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public long getType() {
         return type;

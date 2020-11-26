@@ -4,17 +4,17 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.sanardev.instagramapijava.model.direct.IGThread;
 
-public class IGDirectChatResponse extends BaseResponse {
+public class IGParticipantsResponse extends BaseResponse {
 
     @SerializedName("thread")
     @Expose
-    private IGThread IGThread;
+    private IGThread thread;
 
-    public IGThread getIGThread() {
-        return IGThread;
+    public IGThread getThread() {
+        return thread;
     }
 
-    public void setIGThread(IGThread IGThread) {
-        this.IGThread = IGThread;
+    public void setThread(IGThread thread) {
+        this.thread = thread;
     }
 }

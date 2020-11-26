@@ -1,5 +1,7 @@
 package com.sanardev.instagramapijava.model.direct.messagetype;
 
+import android.os.Bundle;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.sanardev.instagramapijava.model.media.Caption;
@@ -7,6 +9,7 @@ import com.sanardev.instagramapijava.model.media.CarouselMedia;
 import com.sanardev.instagramapijava.model.media.ImageVersions2;
 import com.sanardev.instagramapijava.model.media.VideoVersion;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Media {
@@ -123,6 +126,15 @@ public class Media {
     @SerializedName("story_is_saved_to_archive")
     @Expose
     private boolean storyIsSavedToArchive;
+    private HashMap<Object,Object> bundle;
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public long getTakenAt() {
         return takenAt;

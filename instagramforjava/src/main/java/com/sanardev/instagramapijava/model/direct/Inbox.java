@@ -9,7 +9,7 @@ public class Inbox {
 
     @SerializedName("threads")
     @Expose
-    private List<Thread> threads = null;
+    private List<IGThread> IGThreads = null;
     @SerializedName("has_older")
     @Expose
     private Boolean hasOlder;
@@ -33,12 +33,12 @@ public class Inbox {
     private Boolean blendedInboxEnabled;
 
 
-    public List<Thread> getThreads() {
-        return threads;
+    public List<IGThread> getIGThreads() {
+        return IGThreads;
     }
 
-    public void setThreads(List<Thread> threads) {
-        this.threads = threads;
+    public void setIGThreads(List<IGThread> IGThreads) {
+        this.IGThreads = IGThreads;
     }
 
     public Boolean getHasOlder() {

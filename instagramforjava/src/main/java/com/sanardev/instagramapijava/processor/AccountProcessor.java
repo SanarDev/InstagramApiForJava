@@ -81,6 +81,7 @@ public class AccountProcessor {
                     }
                     IGLoginResponse loginResponse = rs.body();
                     StorageUtils.saveUserData(igRequest.getContext(), loginResponse.getLoggedInUser());
+                    StorageUtils.setCurrentUser(igRequest.getContext(),igRequest.getUsername(),igRequest.getPassword());
                     igRequest.invalidData();
                     return loginResponse;
                 })
@@ -120,6 +121,7 @@ public class AccountProcessor {
                     }
                     IGLoginResponse loginResponse = rs.body();
                     StorageUtils.saveUserData(igRequest.getContext(), loginResponse.getLoggedInUser());
+                    StorageUtils.setCurrentUser(igRequest.getContext(),igRequest.getUsername(),igRequest.getPassword());
                     igRequest.invalidData();
                     return loginResponse;
                 })

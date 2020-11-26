@@ -2,29 +2,31 @@ package com.sanardev.instagramapijava.model.explore;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sanardev.instagramapijava.model.direct.IGThread;
+import com.sanardev.instagramapijava.model.user.TinyUser;
 
 public class Recipients {
 
     @SerializedName("thread")
     @Expose
-    private Thread thread;
+    private IGThread thread;
     @SerializedName("user")
     @Expose
-    private Object user;
+    private TinyUser user;
 
-    public Thread getThread() {
+    public IGThread getThread() {
         return thread;
     }
 
-    public void setThread(Thread thread) {
+    public void setThread(IGThread thread) {
         this.thread = thread;
     }
 
-    public Object getUser() {
+    public TinyUser getUser() {
         return user;
     }
 
-    public void setUser(Object user) {
+    public void setUser(TinyUser user) {
         this.user = user;
     }
 }

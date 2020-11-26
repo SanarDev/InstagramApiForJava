@@ -16,7 +16,9 @@ import com.sanardev.instagramapijava.utils.StorageUtils;
 import com.sanardev.instagramapijava.utils.Utilities;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -41,9 +43,9 @@ public class IGRequest {
     private final String username;
     private IGLoggedUser loggedUser;
     private Cookie cookie;
-    private HashMap<String,String> headers;
+    private HashMap<String, String> headers;
 
-    public IGRequest(Context context,String username,String password) {
+    public IGRequest(Context context, String username, String password) {
         this.context = context;
         this.username = username;
         this.password = password;
@@ -98,12 +100,12 @@ public class IGRequest {
     }
 
     public HashMap<String, String> getHeaders() {
-        return headers;
+        return generateHeaders();
     }
 
     public void invalidData() {
-        this.cookie = StorageUtils.getCookie(context,this.username);
-        this.loggedUser = StorageUtils.getUserData(context,this.username);
+        this.cookie = StorageUtils.getCookie(context, this.username);
+        this.loggedUser = StorageUtils.getUserData(context, this.username);
         this.headers = generateHeaders();
     }
 
@@ -149,9 +151,14 @@ public class IGRequest {
         return headers;
     }
 
-
     public Observable<IGUploadImageResponse> uploadImage(long userId, String filePath) {
-        String uploadId = InstaHashUtils.getClientContext();
+        ArrayList<Long> userIDs = new ArrayList<>();
+        userIDs.add(userId);
+        return uploadImage(userIDs, filePath);
+    }
+
+    public Observable<IGUploadImageResponse> uploadImage(List<Long> userId, String filePath) {
+        String uploadId = InstaHashUtils.getUploadId(false);
         File imageFile = new File(filePath);
         if (!imageFile.exists()) {
             throw new RuntimeException("filePath does not exist");
@@ -160,7 +167,7 @@ public class IGRequest {
         String uploadName = String.format("%s_0_%d", uploadId, hashCode);
 
         HashMap<String, Object> igRuploadParam = new HashMap();
-        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, String.format("[%d]", userId));
+        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, gson.toJson(userId));
         igRuploadParam.put(IGConstants.UPLOAD_ID, uploadId);
         igRuploadParam.put(IGConstants.RETRY_CONTEXT, InstaHashUtils.getRetryContext());
         igRuploadParam.put(IGConstants.MEDIA_TYPE, 1);
@@ -187,6 +194,12 @@ public class IGRequest {
     }
 
     public Observable<IGUploadFinishResponse> uploadVideo(long userId, String filePath) {
+        ArrayList<Long> userIDs = new ArrayList<>();
+        userIDs.add(userId);
+        return uploadVideo(userIDs, filePath);
+    }
+
+    public Observable<IGUploadFinishResponse> uploadVideo(List<Long> userId, String filePath) {
         String uploadId = InstaHashUtils.getClientContext();
         File videoFile = new File(filePath);
         if (!videoFile.exists()) {
@@ -198,7 +211,7 @@ public class IGRequest {
         int mediaDuration = MediaUtils.getMediaDuration(getContext(), filePath);
 
         HashMap<String, Object> igRuploadParam = new HashMap();
-        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, String.format("[%d]", userId));
+        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, gson.toJson(userId));
         igRuploadParam.put(IGConstants.DIRECT_V2, true);
         igRuploadParam.put(IGConstants.ROTATE, false);
         igRuploadParam.put(IGConstants.UPLOAD_MEDIA_WIDTH, mediaWidthHeight[0]);
@@ -265,7 +278,7 @@ public class IGRequest {
 
     }
 
-    public Observable<IGUploadFinishResponse> uploadVoice(long userId, String filePath) {
+    public Observable<IGUploadFinishResponse> uploadVoice(List<Long> userId, String filePath) {
         String uploadId = InstaHashUtils.getClientContext();
         File videoFile = new File(filePath);
         if (!videoFile.exists()) {
@@ -276,7 +289,7 @@ public class IGRequest {
         String uploadName = String.format("%s_0_%d", uploadId, hashCode);
 
         HashMap<String, Object> igRuploadParam = new HashMap();
-        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, String.format("[%d]", userId));
+        igRuploadParam.put(IGConstants.XSHAREING_USER_IDS, gson.toJson(userId));
         igRuploadParam.put(IGConstants.IS_DIRECT_VOICE, true);
         igRuploadParam.put(IGConstants.UPLOAD_MEDIA_DURATION_MS, mediaDuration);
         igRuploadParam.put(IGConstants.UPLOAD_ID, uploadId);

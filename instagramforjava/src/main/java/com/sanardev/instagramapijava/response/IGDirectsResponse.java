@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import com.sanardev.instagramapijava.model.direct.Inbox;
 import com.sanardev.instagramapijava.model.direct.Viewer;
 
-public class IGDirectsResponse {
+public class IGDirectsResponse extends BaseResponse{
 
     @SerializedName("viewer")
     @Expose

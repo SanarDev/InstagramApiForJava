@@ -7,6 +7,7 @@ import com.sanardev.instagramapijava.model.media.ImageVersions2;
 import com.sanardev.instagramapijava.model.media.PreviewComment;
 import com.sanardev.instagramapijava.model.media.VideoVersion;
 import com.sanardev.instagramapijava.model.user.TinyUser;
+import com.sanardev.instagramapijava.model.user.User;
 
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class FelixVideo {
     private int viewCount;
     @SerializedName("user")
     @Expose
-    private Object user;
+    private User user;
     @SerializedName("can_viewer_reshare")
     @Expose
     private Boolean canViewerReshare;
@@ -294,11 +295,11 @@ public class FelixVideo {
         this.viewCount = viewCount;
     }
 
-    public Object getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Object user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

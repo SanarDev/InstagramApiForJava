@@ -6,9 +6,12 @@ import com.sanardev.instagramapijava.model.login.IGLoggedUser;
 import com.sanardev.instagramapijava.request.IGFollowRequest;
 import com.sanardev.instagramapijava.request.IGUnFollowRequest;
 import com.sanardev.instagramapijava.response.IGFollowResponse;
+import com.sanardev.instagramapijava.response.IGPostsResponse;
 import com.sanardev.instagramapijava.response.IGUnfollowResponse;
 import com.sanardev.instagramapijava.response.IGUserInfoResponse;
 import com.sanardev.instagramapijava.utils.Utilities;
+
+import org.jetbrains.annotations.NotNull;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -65,6 +68,22 @@ public class UserProcessor {
         return igRequest.getRemote().getUserInfo(igRequest.getHeaders(), userId)
                 .subscribeOn(Schedulers.io());
     }
+    public Observable<IGUserInfoResponse> getMe() {
+        if(igRequest.getLoggedUser() == null){
+            throw new RuntimeException("You must login first");
+        }
+        return igRequest.getRemote().getUserInfo(igRequest.getHeaders(), igRequest.getLoggedUser().getPk())
+                .subscribeOn(Schedulers.io());
+    }
+
+    public Observable<IGPostsResponse> getPosts(long userId){
+        return igRequest.getRemote().getUserPosts(igRequest.getHeaders(),userId,false,false)
+                .subscribeOn(Schedulers.io());
+    }
+     public Observable<IGPostsResponse> getMorePosts(long userId,String periviosPostId){
+        return igRequest.getRemote().getMorePosts(igRequest.getHeaders(),userId,false,false,periviosPostId)
+                .subscribeOn(Schedulers.io());
+     }
 
     public Observable<IGUserInfoResponse> getUserInfoByUsername(String username){
         if(igRequest.getLoggedUser() == null){
@@ -80,4 +99,5 @@ public class UserProcessor {
         return igRequest.getRemote().searchUser(igRequest.getHeaders(),"user_search_page", Utilities.getTimeZoneOffset(),countOfResult,query)
                 .subscribeOn(Schedulers.io());
     }
+
 }

@@ -4,10 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.sanardev.instagramapijava.model.user.ShortUser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Thread {
+public class IGThread {
 
 
     @SerializedName("thread_id")
@@ -27,7 +28,7 @@ public class Thread {
     private List<Object> adminUserIds;
     @SerializedName("items")
     @Expose
-    private List<Message> messages ;
+    private List<Message> messages = new ArrayList<>();
     @SerializedName("last_activity_at")
     @Expose
     private long lastActivityAt;
@@ -120,7 +121,16 @@ public class Thread {
     private Boolean isSpam;
     @SerializedName("last_permanent_item")
     @Expose
-    private LastPermanentItem lastPermanentItem;
+    private Message lastPermanentItem;
+    private HashMap<Object,Object> bundle;
+
+    public HashMap<Object, Object> getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(HashMap<Object, Object> bundle) {
+        this.bundle = bundle;
+    }
 
     public String getThreadId() {
         return threadId;
@@ -410,12 +420,11 @@ public class Thread {
         isSpam = spam;
     }
 
-    public LastPermanentItem getLastPermanentItem() {
+    public Message getLastPermanentItem() {
         return lastPermanentItem;
     }
 
-    public void setLastPermanentItem(LastPermanentItem lastPermanentItem) {
+    public void setLastPermanentItem(Message lastPermanentItem) {
         this.lastPermanentItem = lastPermanentItem;
     }
-
 }

@@ -5,14 +5,17 @@ import com.google.gson.GsonBuilder
 import com.sanardev.instagramapijava.app.Cookie
 import com.sanardev.instagramapijava.model.login.IGLoggedUser
 import com.sanardev.instagramapijava.model.login.IGTwoFactorInfo
+import com.sanardev.instagramapijava.model.user.CurrentUserCache
 import okhttp3.Headers
 import java.io.*
 import java.util.*
+import kotlin.collections.HashMap
 
 class StorageUtils {
     companion object {
         private const val USER_DATA = "userData"
         private const val COOKIE_DATA = "cookie"
+        private const val CURRENT_USER = "currentUser"
         private const val TWO_FACTOR_INFO = "twoFactorInfo"
 
         @JvmStatic
@@ -152,6 +155,24 @@ class StorageUtils {
         fun getTwoFactorInfo(context: Context, username: String): IGTwoFactorInfo? {
             val fileName = username + "_"+TWO_FACTOR_INFO;
             return readFile(context,fileName,IGTwoFactorInfo::class.java)
+        }
+
+        @JvmStatic
+        fun setCurrentUser(context: Context, username: String, password: String) {
+            removeFiles(context,CURRENT_USER)
+            val currentUser = CurrentUserCache().apply {
+                this.username = username
+                this.password = password
+            }
+            val gson = GsonBuilder().create()
+            val json = gson.toJson(currentUser)
+            writeFile(context, CURRENT_USER,json)
+        }
+
+
+        @JvmStatic
+        fun getCurrentUser(context: Context): CurrentUserCache? {
+            return readFile(context, CURRENT_USER,CurrentUserCache::class.java)
         }
     }
 }
